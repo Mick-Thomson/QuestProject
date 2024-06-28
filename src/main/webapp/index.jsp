@@ -11,8 +11,12 @@
 <a href="question">Quest</a>
 
 <h1>Question: ${questions}</h1>
-<button><p>${answer_1}</p></button>
-<button><p>${answer_2}</p></button>
+<form action="/question" method="get">
+  <button name="${answer_1}" value="${answer_1}">${answer_1}</button>
+</form>
 
+<form action="/question" method="get">
+  <button name="${answer_2}" value="${answer_2}">${answer_2}</button>
+</form>
 </body>
 </html>
