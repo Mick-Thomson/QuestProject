@@ -1,0 +1,101 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "message": "Ты потерял память. Принять вызов НЛО?",
+      "answers": [1, 2],
+      "failed": false,
+      "success": false
+    },
+    {
+      "id": 2,
+      "message": "Ты отказался принять вызов. Поражение!",
+      "answers": [7, 8],
+      "failed": true,
+      "success": false
+    },
+    {
+      "id": 3,
+      "message": "Ты принял вызов. Подняться на мостик к капитану?",
+      "answers": [3, 4],
+      "failed": false,
+      "success": false
+    },
+    {
+      "id": 4,
+      "message": "Ты не пошёл на переговоры. Поражение!",
+      "answers": [7, 8],
+      "failed": true,
+      "success": false
+
+    },
+    {
+      "id": 5,
+      "message": "Ты поднялся на мостик. Тебя спрашивают кто ты?",
+      "answers": [5, 6],
+      "failed": false,
+      "success": false
+    },
+    {
+      "id": 6,
+      "message": "Твою ложь разоблачили. Поражение!",
+      "answers": [7, 8],
+      "failed": true,
+      "success": false
+
+    },
+    {
+      "id": 7,
+      "message": "Тебя вернули домой. Победа!",
+      "answers": [7, 8],
+      "failed": false,
+      "success": true
+    },
+    {
+      "id": 8,
+      "message": "Игра окончена"
+    }
+  ],
+  "answers": [
+    {
+      "id": 1,
+      "choice" : "Принять вызов",
+      "question" : 3
+    },
+    {
+      "id": 2,
+      "choice" : "Отклонить вызов",
+      "question" : 2
+    },
+    {
+      "id": 3,
+      "choice" : "Подняться",
+      "question" : 5
+    },
+    {
+      "id": 4,
+      "choice" : "Не подниматься",
+      "question" : 4
+    },
+    {
+      "id": 5,
+      "choice" : "Сказать правду",
+      "question" : 7
+    },
+    {
+      "id": 6,
+      "choice" : "Солгать",
+      "question" : 6
+    },
+    {
+      "id": 7,
+      "choice" : "Начать игру заного",
+      "question" : 1
+    },
+    {
+      "id": 8,
+      "choice": "Закончить игру",
+      "question": 8
+    }
+  ]
+}
