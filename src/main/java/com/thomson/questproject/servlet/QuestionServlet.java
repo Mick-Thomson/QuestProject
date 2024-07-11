@@ -19,7 +19,7 @@ import java.util.List;
 import static com.thomson.questproject.consts.WebConsts.*;
 
 /**
- * Класс-сервлет для /question
+ * Класс-сервлет для question.jsp и страницы /question
  */
 @WebServlet(name = "questionServlet", value = "/question")
 public class QuestionServlet extends HttpServlet implements DefaultServlet {
