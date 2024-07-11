@@ -16,11 +16,16 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Класс-сервис для вопросов и ответов
+ */
 public class QuestionService {
     private final Data result;
 
     /**
-     * 
+     * Конструкотр с инициализацией экземпляра класса Data,
+     * путём чтения данных из файла data.json
+     * и преобразования их строковых значений к классу Data
      */
     public QuestionService() throws URISyntaxException, IOException {
         Path path = Paths.get(Objects.requireNonNull(getClass().getClassLoader()
@@ -35,11 +40,11 @@ public class QuestionService {
     }
 
     /**
-     *
-     * @param questionId
-     * @return
+     * Метод получения списка ответов из полученного вопроса
+     * @param questionId номер вопроса, из которого получаем список возможных ответов
+     * @return список ответов
      */
-    public List<Answer> answersByQuestionId(Integer questionId) {
+    public List<Answer> getAnswersByQuestionId(Integer questionId) {
         /**
          * Достаём из распарсенного json-файла List<Question> отфильтрованный по условию:
          * id вопроса совпадает с переданным id
@@ -65,15 +70,26 @@ public class QuestionService {
     }
 
     /**
-     *
-     * @param answerId
-     * @return
+     * Метод получения следующего вопроса из вбранного ответа
+     * @param answerId номер ответа, из списка ответов, содержащихся в вопросе
+     * @return номер следующего вопроса из ответа
      */
     public Question getQuestionByAnswerId(Integer answerId) {
+        /**
+         * Получаем Optional id ответа:
+         * Филтруем список ответов, сравнивая все id из списка с переданным
+         * Возвращаем первый совпавший
+         */
         var answer = result.getAnswers().stream()
-                .filter(q -> Objects.equals(q.getId(), answerId))
+                .filter(an -> Objects.equals(an.getId(), answerId))
                 .findFirst();
 
+        /**
+         * Если такой ответ существует, то получаем Optional вопроса, отфильтрованного пр правилу:
+         * id вопроса совпадает с номером вопроса, который лежит в полученном ранее ответе
+         * Возвращаем первый совпавший
+         * Если такой вопрос существует, возвращаем вопрос
+         */
         if (answer.isPresent()) {
             var question = result.getQuestions()
                     .stream()
@@ -87,10 +103,13 @@ public class QuestionService {
     }
 
     /**
-     *
-     * @return
+     * Метод получения экземпляр класса Data
      */
     public Data readFromFile() {
+        return result;
+    }
+
+    public Data getResult() {
         return result;
     }
 }

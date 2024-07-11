@@ -9,6 +9,9 @@ import lombok.SneakyThrows;
 
 import static com.thomson.questproject.consts.WebConsts.QUESTION_SERVICE;
 
+/**
+ * Класс-лисенер для QuestionService
+ */
 @WebListener
 public class AppContextListener implements ServletContextListener {
     @SneakyThrows

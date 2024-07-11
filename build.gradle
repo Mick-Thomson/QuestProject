@@ -11,7 +11,7 @@ repositories {
 }
 
 ext {
-  junitVersion = '5.9.2'
+  junitVersion = '5.10.2'
 }
 
 sourceCompatibility = '11'
@@ -28,6 +28,9 @@ dependencies {
   implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
   compileOnly 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
 
+  // Mockito
+  testImplementation 'org.mockito:mockito-core:5.11.0'
+
   // JUnit
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
@@ -43,4 +46,5 @@ dependencies {
 }
 
 test {
-useJUnitPlatform()}
+useJUnitPlatform()
+}

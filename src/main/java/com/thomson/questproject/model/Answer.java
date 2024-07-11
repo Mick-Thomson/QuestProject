@@ -1,5 +1,8 @@
 package com.thomson.questproject.model;
 
+/**
+ * Класс, содержащий данные ответа
+ */
 public class Answer {
     private int id;
     private String choice;

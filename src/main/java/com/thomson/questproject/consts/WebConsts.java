@@ -2,6 +2,9 @@ package com.thomson.questproject.consts;
 
 import lombok.experimental.UtilityClass;
 
+/**
+ * Класс констант для сервлета и для лисенера
+ */
 @UtilityClass
 public class WebConsts {
     public static final String QUESTION = "question";

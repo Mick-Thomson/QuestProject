@@ -1,13 +1,10 @@
 package com.thomson.questproject.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import java.util.List;
 
-
-
+/**
+ * Класс данных в виде списков вопросов и ответов
+ */
 public class Data {
     public List<Question> questions;
     public List<Answer> answers;

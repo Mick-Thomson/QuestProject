@@ -1,10 +1,10 @@
 package com.thomson.questproject.model;
 
-import lombok.Data;
-
 import java.util.List;
 
-
+/**
+ * Класс, содержащий данные вопроса
+ */
 public class Question{
     public int id;
     public String message;

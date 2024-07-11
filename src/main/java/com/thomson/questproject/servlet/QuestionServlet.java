@@ -18,6 +18,9 @@ import java.util.List;
 
 import static com.thomson.questproject.consts.WebConsts.*;
 
+/**
+ * Класс-сервлет для /question
+ */
 @WebServlet(name = "questionServlet", value = "/question")
 public class QuestionServlet extends HttpServlet implements DefaultServlet {
 
@@ -36,23 +39,21 @@ public class QuestionServlet extends HttpServlet implements DefaultServlet {
 
     @SneakyThrows
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
         if (request.getParameter(ANSWER) == null) {
             var firstQuestion = data.questions.get(0);
             sendRequest(request, response, firstQuestion);
         } else {
-            var currentAnswer = getParametrAsInteger(request, ANSWER);
+            var currentAnswer = getParameterAsInteger(request, ANSWER);
             var questionToRender = questionService.getQuestionByAnswerId(currentAnswer);
             sendRequest(request, response, questionToRender);
         }
     }
 
     /**
-     *
-     *
-     * @param request
-     * @param response
-     * @param firstQuestion
+     * Метод устанавливает атрибуты запроса на кнопки выбора ответов
+     * и перенаправляет на нужные jsp страницы
+     * @param firstQuestion входящий вопрос
      */
     @SneakyThrows
     private void sendRequest(HttpServletRequest request,
@@ -60,17 +61,17 @@ public class QuestionServlet extends HttpServlet implements DefaultServlet {
                              Question firstQuestion) throws ServletException, IOException {
         request.setAttribute(QUESTION, firstQuestion);
 
-        List<Answer> answers = questionService.answersByQuestionId(firstQuestion.getId());
+        List<Answer> answers = questionService.getAnswersByQuestionId(firstQuestion.getId());
 
         if (firstQuestion.isFailed()) {
-            getServletContext().getRequestDispatcher(GAME_OVER_JSP).forward(request, response);
             request.setAttribute(ANSWER_1, answers.get(0));
             request.setAttribute(ANSWER_2, answers.get(1));
+            getServletContext().getRequestDispatcher(GAME_OVER_JSP).forward(request, response);
         }
         if (firstQuestion.isSuccess()) {
-            getServletContext().getRequestDispatcher(GAME_OVER_JSP).forward(request, response);
             request.setAttribute(ANSWER_1, answers.get(0));
             request.setAttribute(ANSWER_2, answers.get(1));
+            getServletContext().getRequestDispatcher(GAME_OVER_JSP).forward(request, response);
         }
 
         request.setAttribute(ANSWER_1, answers.get(0));
